@@ -1,0 +1,47 @@
+<div [formGroup]="formStores" class="store-container" fxFlex="100%" fxfLayout="column">
+    <div fxLayout="row" fxFill>
+        <div class="left-side" fxFlex="40%">
+            <div class="bg" fxFill fxLayoutAlign="center center">
+                <img src="/assets/images/Pizza.png" />
+            </div>
+        </div>
+        <div class="right-side" fxFlex="60%" fxLayout="column" fxFill>
+            <div class="right-side-content">
+                <nav>
+                    <logout></logout>
+                </nav>
+                <div class="breadcrumbs">
+                    <span class="breadcrumb-item current">Pizzerías</span>
+                </div>
+                <div fxLayout="column">
+                    <div class="title">
+                        Tiendas
+                    </div>
+                    <div class="subtitle">
+                        Escoge tu pizzería favorita
+                    </div>
+                    <div class="search-container" fxLayoutAlign="start center">
+                        <input type="text" placeholder="Ingresa el nombre tu pizzería favorita" formControlName="filterValue" />
+                    </div>
+                    <div fxLayout="column" class="restaurants-container">
+                        <div fxFlex="100%" fxLayout="row wrap" fxLayoutGap="50px" fxLayoutAlign="space-evently center">
+                            <div *ngFor="let store of filteredData|async" class="restaurant-item" [routerLink]="['/stores', store.id]">
+                                <img [src]="store.imageUri" />
+                                <div class="name-container">
+                                    <b [innerHTML]="store.name"></b>
+                                </div>
+                                <div class="address-container" [innerHTML]="store.address">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer">
+                <div fxFlexAlign="end">
+                    <img src="/assets/images/Best Pizza.png">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

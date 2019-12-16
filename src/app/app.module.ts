@@ -8,12 +8,16 @@ import { LoginComponent } from './pages/login/login.component';
 import { StoreComponent } from './pages/store/store.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { StoresComponent } from './pages/stores/stores.component';
+import { LogoutComponent } from './pages/logout/logout.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    StoreComponent
+    StoreComponent,
+    StoresComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,
