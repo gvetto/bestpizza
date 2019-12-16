@@ -6,17 +6,20 @@ import { User } from '../models/user';
   providedIn: 'root'
 })
 export class AuthService {
-
   users: User[];
 
   constructor(private dataReader: DataReaderService) { }
 
-  validateUser(email: string) {
-    this.dataReader.fetchData()
-      .subscribe(response => {
-        this.users = response.users;
-        const isValid = this.users.find(x => x.email === email) !== null;
-        return isValid;
-      });
+  async validateUserAsync(email: string) {
+    const data: any = await this.dataReader.fetchDataAsync();
+    return new Promise(resolve => {
+      this.users = data.users;
+      const isValid = this.users.find(x => x.email === email) !== undefined;
+      resolve(isValid);
+    });
+  }
+
+  logout() {
+    //TODO
   }
 }

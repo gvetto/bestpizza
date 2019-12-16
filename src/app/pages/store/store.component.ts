@@ -1,4 +1,11 @@
+import { AuthService } from './../../services/auth.service';
+import { DataReaderService } from './../../services/data-reader.service';
 import { Component, OnInit } from '@angular/core';
+import { Store } from 'src/app/models/store';
+import { Observable } from 'rxjs';
+import { FormGroup, FormBuilder } from '@angular/forms';
+import { map, startWith } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-store',
@@ -7,41 +14,61 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StoreComponent implements OnInit {
 
-  constructor() { }
+  constructor(private fb: FormBuilder,
+    private router: Router,
+    private authService: AuthService,
+    private dataService: DataReaderService) { }
 
-  data: Restaurant[] = [{
-    imageUri: '/assets/images/Panos_pizza.png',
-    name: 'Pano`s Pizza',
-    address: 'Calle 54 # 7 - 43'
-  }, {
-    imageUri: '/assets/images/Sbarro.png',
-    name: 'SBarro',
-    address: 'Calle 79 # 15 - 32'
-  }, {
-    imageUri: '/assets/images/pizzeria_camion.png',
-    name: 'Pizzeria Camion',
-    address: 'Calle 94 # 9 - 76'
-  }, {
-    imageUri: '/assets/images/voglia_di_pizza.png',
-    name: 'Voglia Di Pizza',
-    address: 'Carrera 9 # 9 - 87'
-  }, {
-    imageUri: '/assets/images/stroller_pizza.png',
-    name: 'Stroller Pizza',
-    address: 'Calle 53 # 4a - 38'
-  }, {
-    imageUri: '/assets/images/trulli.png',
-    name: 'Trulli',
-    address: 'Carrera 9 # 66 - 48'
-  }];
+  data: Store[];
+  filteredData: Observable<Store[]>;
+  formStores: FormGroup;
 
   ngOnInit() {
+    this.formStores = this.fb.group({
+      filterValue: ['']
+    });
+
+    this.loadStores();
+  }
+
+  private async loadStores() {
+    let i = 0;
+    const stores = await this.dataService.getStoresAsync();
+    stores.forEach((store: Store) => {
+      store.imageUri = IMAGES[i];
+      i++;
+      if (i > 5) {
+        i = 0;
+      }
+    });
+
+    this.data = stores;
+
+    this.filteredData = this.formStores.get('filterValue')
+      .valueChanges
+      .pipe(
+        startWith(''),
+        map(value => this._filterStores(value))
+      );
+  }
+
+  private _filterStores(value: string): Store[] {
+    const result = this.data.filter(x => x.name.toLowerCase().includes(value));
+    return result;
+  }
+
+  logout() {
+    this.authService.logout();
+    this.router.navigate(['/login'])
   }
 
 }
 
-export class Restaurant {
-  imageUri: string;
-  name: string;
-  address: string;
-}
+const IMAGES = [
+  '/assets/images/Panos_pizza.png',
+  '/assets/images/Sbarro.png',
+  '/assets/images/pizzeria_camion.png',
+  '/assets/images/voglia_di_pizza.png',
+  '/assets/images/stroller_pizza.png',
+  '/assets/images/trulli.png'
+];

@@ -35,6 +35,17 @@
                 .subtitle {
                     font-size: 22px;
                 }
+                .search-container {
+                    margin: 10px 0;
+                    input {
+                        font-size: 18px;
+                        border: none;
+                        border-bottom: 1px solid gray;
+                        width: 100%;
+                        outline: none;
+                        padding: 10px 0;
+                    }
+                }
                 .restaurants-container {
                     margin-top: 50px;
                     .restaurant-item {

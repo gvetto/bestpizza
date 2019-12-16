@@ -5,11 +5,26 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class DataReaderService {
+  url = 'https://raw.githubusercontent.com/kevmuy/test-frontend/master/RH.json';
 
   constructor(private httpClient: HttpClient) { }
 
-  fetchData() {
-    const url = 'https://raw.githubusercontent.com/kevmuy/test-frontend/master/RH.json';
-    return this.httpClient.get<any>(url);
+  async fetchDataAsync() {
+    return new Promise(resolve => {
+      this.httpClient.get<any>(this.url)
+        .subscribe(response => {
+          resolve(response.response);
+        });
+    });
+  }
+
+  async getUsersAsync() {
+    const data: any = await this.fetchDataAsync();
+    return data.users;
+  }
+
+  async getStoresAsync() {
+    const data: any = await this.fetchDataAsync();
+    return data.stores;
   }
 }

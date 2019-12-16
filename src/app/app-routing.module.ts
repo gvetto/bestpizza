@@ -4,12 +4,12 @@ import { LoginComponent } from './pages/login/login.component';
 import { StoreComponent } from './pages/store/store.component';
 
 const routes: Routes = [{
-  path: '', redirectTo: '/store', pathMatch: 'full'
+  path: '', redirectTo: '/stores', pathMatch: 'full'
 }, {
   path: 'login',
   component: LoginComponent
 }, {
-  path: 'store',
+  path: 'stores',
   component: StoreComponent
 }];
 

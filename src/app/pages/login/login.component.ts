@@ -12,19 +12,21 @@ export class LoginComponent implements OnInit {
 
   submitted = false;
 
-  constructor(private formBuilder: FormBuilder,
-    private router: Router,
-    private authService: AuthService) { }
+  constructor(private formBuilder: FormBuilder, private router: Router, private authService: AuthService) { }
 
   loginForm: FormGroup;
+  errors: any = {
+    userNotExist: false
+  };
 
   get username() { return this.loginForm.get('userName'); }
 
   get password() { return this.loginForm.get('password'); }
 
   ngOnInit() {
+    this.errors.userNotExist = false;
     this.loginForm = this.formBuilder.group({
-      userName: ['', [Validators.required]],
+      userName: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required]]
     });
   }
@@ -33,13 +35,16 @@ export class LoginComponent implements OnInit {
 
   }
 
-  onSubmit() {
+  async onSubmit() {
     this.submitted = true;
     const isValid = !this.loginForm.invalid;
     if (isValid) {
-      this.authService.validateUser(this.username.value)
-      this.router.navigate(['/store'])
+      const isValidUser = await this.authService.validateUserAsync(this.username.value);
+      if (isValidUser) {
+        this.router.navigate(['/stores']);
+      } else {
+        this.errors.userNotExist = true;
+      }
     }
   }
-
 }
