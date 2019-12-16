@@ -1,0 +1,46 @@
+<div class="store-container" fxFlex="100%" fxfLayout="column">
+    <div fxLayout="row" fxFill>
+        <div class="left-side" fxFlex="40%">
+            <div class="bg" fxFill fxLayoutAlign="center center">
+                <img src="/assets/images/Pizza.png" />
+            </div>
+        </div>
+        <div class="right-side" fxFlex="60%" fxLayout="column" fxFill>
+            <div class="right-side-content">
+                <nav>
+                    <div>
+                        Salir
+                    </div>
+                </nav>
+                <div class="breadcrumbs">
+                    <span class="breadcrumb-item current">Pizzerías</span>
+                </div>
+                <div fxLayout="column">
+                    <div class="title">
+                        Tiendas
+                    </div>
+                    <div class="subtitle">
+                        Escoge tu pizzería favorita
+                    </div>
+                    <div fxLayout="column" class="restaurants-container">
+                        <div fxFlex="100%" fxLayout="row wrap" fxLayoutGap="50px" fxLayoutAlign="space-evently center">
+                            <div *ngFor="let restaurant of data" class="restaurant-item">
+                                <img [src]="restaurant.imageUri" />
+                                <div class="name-container">
+                                    <b [innerHTML]="restaurant.name"></b>
+                                </div>
+                                <div class="address-container" [innerHTML]="restaurant.address">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer">
+                <div fxLayoutAlign="start center">
+                    <img src="/assets/images/Best Pizza.png">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

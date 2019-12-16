@@ -1,0 +1,42 @@
+<div class="login-container" fxFlex="100%" fxfLayout="column">
+    <div fxLayout="row" fxFill>
+        <div class="left-side" fxFlex="40%">
+            <div class="bg" fxFill fxLayoutAlign="center center">
+                <img src="/assets/images/Pizza.png" />
+            </div>
+        </div>
+        <div class="right-side" fxFlex="60%" fxLayout="column" fxLayoutAlign="center center">
+            <img class="header-image" src="/assets/images/Login-Best-Pizza.png" />
+            <div class="title">Bienvenido</div>
+            <div class="subtitle">A las mejores pizzas del país</div>
+            <div class="form-container">
+                <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                    <div class="form-control-container" fxLayoutAlign="center center">
+                        <input id="username" type="text" class="form-control" placeholder="Usuario" formControlName="userName" required />
+                        <img src="/assets/images/ic_usuario.png" />
+                    </div>
+                    <div *ngIf="submitted || username.invalid && (username.dirty || username.touched)" class="alert alert-danger">
+                        <div *ngIf="username.errors.required">
+                            El nombre de usuario es requerido
+                        </div>
+                    </div>
+                    <div class="form-control-container" fxLayoutAlign="center center">
+                        <input id="password" type="password" class="form-control" placeholder="Contraseña" formControlName="password" required />
+                        <img src="/assets/images/ic_contraseña.png" />
+                    </div>
+                    <div *ngIf="submitted || password.invalid && (password.dirty || password.touched)" class="alert alert-danger">
+                        <div *ngIf="password.errors.required">
+                            La contraseña es requerida
+                        </div>
+                    </div>
+                    <div class="forgot-password-container" fxLayoutAlign="center center">
+                        <a (click)="forgotPassword()">¿Olvidaste tu contraseña?</a>
+                    </div>
+                    <div fxLayoutAlign="center center">
+                        <button type="submit">Iniciar sesión</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

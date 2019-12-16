@@ -1,0 +1,62 @@
+.store-container {
+    font-size: 22px;
+    div {
+        .left-side {
+            .bg {
+                background-image: url('../../../assets/images/imagebkg.png');
+                background-size: cover;
+                img {
+                    width: 100%;
+                }
+            }
+        }
+        .right-side {
+            .right-side-content {
+                margin: 80px;
+                .breadcrumbs {
+                    margin: 20px 0;
+                    .breadcrumb-item {
+                        &.current {
+                            border-bottom: 4px solid #FFC107;
+                            padding-bottom: 2px;
+                        }
+                    }
+                }
+                nav {
+                    div {
+                        &:first-child {
+                            text-align: right;
+                        }
+                    }
+                }
+                .title {
+                    font-size: 50px;
+                }
+                .subtitle {
+                    font-size: 22px;
+                }
+                .restaurants-container {
+                    margin-top: 50px;
+                    .restaurant-item {
+                        margin-bottom: 20px;
+                        div:last-child {
+                            font-weight: lighter;
+                            font-size: 16px;
+                        }
+                    }
+                }
+            }
+            .footer {
+                background-color: #1d1d1d;
+                height: 100px;
+                position: fixed;
+                bottom: 0;
+                width: 100%;
+                img {
+                    height: 80px;
+                }
+            }
+        }
+    }
+    height: 100vh;
+}
