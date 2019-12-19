@@ -11,6 +11,7 @@
       }
     }
     .right-side {
+      overflow: auto;
       .right-side-content {
         margin: 80px;
         .breadcrumbs {
@@ -29,6 +30,21 @@
           b {
             font-size: 50px;
             font-weight: 200;
+          }
+        }
+        .products-container {
+          div:first-child {
+            padding-bottom: 5px;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 10px;
+          }
+
+          img {
+            width: 80px;
+          }
+
+          .size-container {
+            font-size: 10px;
           }
         }
       }
