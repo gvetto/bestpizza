@@ -32,14 +32,14 @@
                             La contraseña es requerida
                         </div>
                     </div>
+                    <div *ngIf="errors.userNotExist" class="alert alert-danger">
+                        El usuario o la contraseña son invalidos.
+                    </div>
                     <div class="forgot-password-container" fxLayoutAlign="center center">
                         <a (click)="forgotPassword()">¿Olvidaste tu contraseña?</a>
                     </div>
                     <div fxLayoutAlign="center center">
                         <button type="submit">Iniciar sesión</button>
-                    </div>
-                    <div *ngIf="errors.userNotExist" class="alert alert-danger">
-                        El usuario o la contraseña son invalidos.
                     </div>
                 </form>
             </div>

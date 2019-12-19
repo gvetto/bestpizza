@@ -10,11 +10,11 @@ export class AuthService {
 
   constructor(private dataReader: DataReaderService) { }
 
-  async validateUserAsync(email: string) {
+  async validateUserAsync(email: string, password: string) {
     const data: any = await this.dataReader.fetchDataAsync();
     return new Promise(resolve => {
       this.users = data.users;
-      const isValid = this.users.find(x => x.email === email) !== undefined;
+      const isValid = this.users.find(x => x.email === email && x.password === password) !== undefined;
       resolve(isValid);
     });
   }

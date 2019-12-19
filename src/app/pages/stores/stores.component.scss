@@ -59,17 +59,63 @@
                     }
                 }
             }
-            .footer {
+            footer {
                 background-color: #1d1d1d;
-                height: 100px;
+                height: 80px;
                 position: fixed;
                 bottom: 0;
                 width: 100%;
-                img {
-                    height: 80px;
+                div {
+                    img {
+                        height: 50px;
+                    }
                 }
             }
         }
     }
     height: 100vh;
+}
+
+@media (max-width: 768px) {
+    .store-container {
+        font-size: 18px;
+        div {
+            .right-side {
+                .right-side-content {
+                    margin: 20px;
+                    .title {
+                        font-size: 30px;
+                    }
+                    .subtitle {
+                        font-size: 16px;
+                    }
+                    .search-container {
+                        input {
+                            font-size: 14px;
+                        }
+                    }
+                    .restaurants-container {
+                        margin-top: 50px;
+                        .restaurant-item {
+                            margin-bottom: 20px;
+                            cursor: pointer;
+                            outline: none;
+                            div:last-child {
+                                font-weight: lighter;
+                                font-size: 16px;
+                            }
+                        }
+                    }
+                }
+                footer {
+                    height: 60px;
+                    div {
+                        img {
+                            height: 40px;
+                        }
+                    }
+                }
+            }
+        }
+    }
 }

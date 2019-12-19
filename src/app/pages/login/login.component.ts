@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
     this.submitted = true;
     const isValid = !this.loginForm.invalid;
     if (isValid) {
-      const isValidUser = await this.authService.validateUserAsync(this.username.value);
+      const isValidUser = await this.authService.validateUserAsync(this.username.value, this.password.value);
       if (isValidUser) {
         this.router.navigate(['/stores']);
       } else {

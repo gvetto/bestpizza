@@ -24,7 +24,7 @@
                         <input type="text" placeholder="Ingresa el nombre tu pizzería favorita" formControlName="filterValue" />
                     </div>
                     <div fxLayout="column" class="restaurants-container">
-                        <div fxFlex="100%" fxLayout="row wrap" fxLayoutGap="50px" fxLayoutAlign="space-evently center">
+                        <div fxFlex="100%" fxLayout="row wrap" fxLayoutGap="50px" fxLayoutAlign="space-evently center" fxLayoutAlign.xs="center center" fxLayoutGap.xs="0">
                             <div *ngFor="let store of filteredData|async" class="restaurant-item" [routerLink]="['/stores', store.id]">
                                 <img [src]="store.imageUri" />
                                 <div class="name-container">
@@ -37,11 +37,11 @@
                     </div>
                 </div>
             </div>
-            <div class="footer">
-                <div fxFlexAlign="end">
+            <footer>
+                <div fxLayout.xs="row" fxLayoutAlign.xs="end center">
                     <img src="/assets/images/Best Pizza.png">
                 </div>
-            </div>
+            </footer>
         </div>
     </div>
 </div>

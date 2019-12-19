@@ -46,3 +46,40 @@
     }
     height: 100vh;
 }
+
+@media (max-width: 768px) {
+    .store-container {
+        font-size: 18px;
+        div {
+            .right-side {
+                .right-side-content {
+                    margin: 20px;
+                    .breadcrumbs {
+                        margin: 20px 0;
+                        .breadcrumb-item {
+                            &.current {
+                                border-bottom: 4px solid #FFC107;
+                                padding-bottom: 2px;
+                            }
+                        }
+                    }
+                    .store-info-container {
+                        img {
+                            max-width: 60px;
+                        }
+                        b {
+                            font-size: 50px;
+                            font-weight: 200;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {}
+
+@media (min-width: 992px) and (max-width: 1199px) {}
+
+@media screen and (min-width: 1200px) {}
