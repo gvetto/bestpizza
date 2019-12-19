@@ -1,85 +1,118 @@
 .store-container {
-    font-size: 22px;
-    div {
-        .left-side {
-            .bg {
-                background-image: url('../../../assets/images/imagebkg.png');
-                background-size: cover;
-                img {
-                    width: 100%;
-                }
-            }
+  font-size: 22px;
+  div {
+    .left-side {
+      .bg {
+        background-image: url("../../../assets/images/imagebkg.png");
+        background-size: cover;
+        img {
+          width: 100%;
         }
-        .right-side {
-            .right-side-content {
-                margin: 80px;
-                .breadcrumbs {
-                    margin: 20px 0;
-                    .breadcrumb-item {
-                        &.current {
-                            border-bottom: 4px solid #FFC107;
-                            padding-bottom: 2px;
-                        }
-                    }
-                }
-                .store-info-container {
-                    img {
-                        max-width: 60px;
-                    }
-                    b {
-                        font-size: 50px;
-                        font-weight: 200;
-                    }
-                }
-            }
-            .footer {
-                background-color: #1d1d1d;
-                height: 100px;
-                position: fixed;
-                bottom: 0;
-                width: 100%;
-                img {
-                    height: 80px;
-                }
-            }
-        }
+      }
     }
-    height: 100vh;
+    .right-side {
+      .right-side-content {
+        margin: 80px;
+        .breadcrumbs {
+          margin: 20px 0;
+          .breadcrumb-item {
+            &.current {
+              border-bottom: 4px solid #ffc107;
+              padding-bottom: 2px;
+            }
+          }
+        }
+        .store-info-container {
+          img {
+            max-width: 60px;
+          }
+          b {
+            font-size: 50px;
+            font-weight: 200;
+          }
+        }
+      }
+      .footer {
+        background-color: #1d1d1d;
+        height: 100px;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        img {
+          height: 80px;
+        }
+      }
+    }
+  }
+  height: 100vh;
 }
 
 @media (max-width: 768px) {
-    .store-container {
-        font-size: 18px;
-        div {
-            .right-side {
-                .right-side-content {
-                    margin: 20px;
-                    .breadcrumbs {
-                        margin: 20px 0;
-                        .breadcrumb-item {
-                            &.current {
-                                border-bottom: 4px solid #FFC107;
-                                padding-bottom: 2px;
-                            }
-                        }
-                    }
-                    .store-info-container {
-                        img {
-                            max-width: 60px;
-                        }
-                        b {
-                            font-size: 50px;
-                            font-weight: 200;
-                        }
-                    }
-                }
-            }
+  .store-container {
+    font-size: 18px;
+    div {
+      .left-side {
+        .bg {
+          img {
+            width: 80%;
+          }
         }
+      }
+      .right-side {
+        .right-side-content {
+          margin: 20px;
+          .breadcrumbs {
+            margin: 20px 0;
+            .breadcrumb-item {
+              &.current {
+                border-bottom: 4px solid #ffc107;
+                padding-bottom: 2px;
+              }
+            }
+          }
+          .store-info-container {
+            img {
+              max-width: 60px;
+            }
+            b {
+              font-size: 30px;
+              font-weight: 200;
+            }
+          }
+          .products-container {
+            div:first-child {
+              padding-bottom: 5px;
+              border-bottom: 1px solid #eee;
+              margin-bottom: 10px;
+            }
+
+            img {
+              width: 80px;
+            }
+
+            .size-container {
+              font-size: 10px;
+            }
+          }
+        }
+        footer {
+          height: 60px;
+          div {
+            img {
+              height: 40px;
+            }
+          }
+        }
+      }
     }
+  }
 }
 
-@media (min-width: 768px) and (max-width: 991px) {}
+@media (min-width: 768px) and (max-width: 991px) {
+}
 
-@media (min-width: 992px) and (max-width: 1199px) {}
+@media (min-width: 992px) and (max-width: 1199px) {
+}
 
-@media screen and (min-width: 1200px) {}
+@media screen and (min-width: 1200px) {
+}

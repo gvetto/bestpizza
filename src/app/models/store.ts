@@ -4,6 +4,8 @@ export interface Store {
   address: string;
   description: string;
   imageUri: string;
+  facebookUri: string;
+  instagramUri: string;
   products: Product[];
 }
 

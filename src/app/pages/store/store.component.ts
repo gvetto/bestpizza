@@ -14,20 +14,36 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class StoreComponent implements OnInit {
 
+  loading: boolean = false;
   model: Store;
 
   constructor(private fb: FormBuilder,
     private route: ActivatedRoute,
     private dataService: DataReaderService) { }
 
+  sizes = [{
+    id: 1,
+    label: 'Personal'
+  }, {
+    id: 2,
+    label: 'Mediana'
+  }, {
+    id: 3,
+    label: 'Grande'
+  }]
 
   ngOnInit() {
-    this.loadStore();
+    const storeId = this.route.snapshot.paramMap.get('id');
+    this.loadStore(storeId);
   }
 
-  async loadStore() {
-    const storeId = this.route.snapshot.paramMap.get('id');
-    const store = await this.dataService.getStoreAsync(Number.parseInt(storeId));
+  async loadStore(storeId) {
+    let store = await this.dataService.getStoreAsync(Number.parseInt(storeId));
     this.model = store;
+    this.loading = true;
+  }
+
+  addPizza() {
+
   }
 }

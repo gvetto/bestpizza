@@ -42,7 +42,8 @@ export class DataReaderService {
 
   async getStoreAsync(storeId: number) {
     const stores: any = await this.getStoresAsync();
-    return stores.find(x => x.id === storeId);
+    let store = stores.find(x => x.id === storeId);
+    return store;
   }
 }
 

@@ -1,36 +1,62 @@
-<div class="store-container" fxFlex="100%" fxfLayout="column">
-    <div fxLayout="row" fxLayout.xs="column" fxFill>
-        <div class="left-side" fxFlex="40%" fxFlex.xs="20%">
-            <div class="bg" fxFill fxLayoutAlign="center center">
-                <img src="/assets/images/Pizza.png" />
-            </div>
-        </div>
-        <div class="right-side" fxFlex="60%" fxFlex.xs="80%" fxLayout="column" fxFill>
-            <div class="right-side-content">
-                <nav>
-                    <logout></logout>
-                </nav>
-                <div class="breadcrumbs">
-                    <span class="breadcrumb-item current cursor-pointer" routerLink="/stores">Volver a Pizzerías</span>
-                </div>
-                <div class="store-info-container">
-                    <div fxLayoutAlign="start center">
-                        <img [src]="model.imageUri" />
-                        <b [innerHTML]="model.name"></b>
-                    </div>
-                    <p [innerHTML]="model.description"></p>
-                </div>
-                <div class="products-container">
-                    <div *ngFor="let product of model.products">
-                        <b [innerHTML]="product.name"></b>
-                    </div>
-                </div>
-            </div>
-            <div class="footer">
-                <div fxFlexAlign="end">
-                    <img src="/assets/images/Best Pizza.png">
-                </div>
-            </div>
-        </div>
+<div class="store-container" fxFlex="100%" fxfLayout="column" *ngIf="loading">
+  <div fxLayout="row" fxLayout.xs="column" fxFill>
+    <div class="left-side" fxFlex="40%" fxFlex.xs="20%">
+      <div class="bg" fxFill fxLayoutAlign="center center">
+        <img src="/assets/images/Pizza.png" />
+      </div>
     </div>
+    <div class="right-side" fxFlex="60%" fxFlex.xs="80%" fxLayout="column" fxFill>
+      <div class="right-side-content">
+        <nav>
+          <logout></logout>
+        </nav>
+        <div class="breadcrumbs" fxLayoutAlign="start center">
+          <mat-icon>chevron_left</mat-icon>
+          <span class="breadcrumb-item current cursor-pointer" routerLink="/stores">
+            Volver a Pizzerías
+          </span>
+        </div>
+        <div class="store-info-container">
+          <div fxLayoutAlign="start center">
+            <img [src]="model.imageUri" />
+            <b [innerHTML]="model.name"></b>
+          </div>
+          <p [innerHTML]="model.description"></p>
+        </div>
+        <p>Nuestras Pizzas</p>
+        <div class="products-container">
+          <div *ngFor="let product of model.products" fxLayout="column">
+            <b [innerHTML]="product.name"></b>
+            <div fxFlex="row" fxLayoutAlign="start center" fxLayoutGap="20px">
+              <img src="/assets/images/Pizza.png" />
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In non justo a leo imperdiet efficitur. Mauris
+                vitae arcu sit amet elit lacinia accumsan ut vel leo.</p>
+            </div>
+            <div fxLayout="row">
+              <div fxFlex="60%" fxLayout="column" fxLayoutAlign="start center">
+                <b>Escoge el tamaño de tu pizza</b>
+                <div class="size-container">
+                  <mat-radio-group>
+                    <mat-radio-button *ngFor="let size of sizes" [value]="size">
+                      {{size.label}}
+                    </mat-radio-button>
+                  </mat-radio-group>
+                </div>
+              </div>
+
+              <div fxFlex="40%" fxLayoutAlign="end center">
+                <button mat-button (click)="addPizza()">Agregar</button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <footer>
+        <div fxLayout.xs="row" fxLayoutAlign.xs="end center">
+          <img src="/assets/images/Best Pizza.png">
+        </div>
+      </footer>
+    </div>
+  </div>
 </div>

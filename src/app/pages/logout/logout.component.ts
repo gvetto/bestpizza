@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'logout',
-  template: '<div fxLayoutAlign="end center"><a class="cursor-pointer" (click)="logout()">Salir</a></div><a>'
+  template: '<div fxLayoutAlign="end center"><mat-icon>lock</mat-icon><a class="cursor-pointer" (click)="logout()">Salir</a></div><a>'
 })
 export class LogoutComponent implements OnInit {
 
